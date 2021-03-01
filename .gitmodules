@@ -1,0 +1,3 @@
+[submodule "src/assets/QuestGameEngine"]
+	path = src/assets/QuestGameEngine
+	url = https://github.com/valdecimpj/QuestGameEngine
