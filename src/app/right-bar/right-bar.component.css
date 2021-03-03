@@ -1,0 +1,12 @@
+#rightbar{
+    padding:5px;
+    float:right;
+    width:320px;
+    background-color: #ddd;
+    height:100%;
+    right:0;
+    position:fixed;
+}
+.selectedObj{
+    background-color:rgb(255, 165, 92);
+}

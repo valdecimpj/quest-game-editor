@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameEngineService } from './game-engine.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'quest-game-editor';
+
+  title = 'Quest Game Editor';
+
+  constructor(private gameEngineService: GameEngineService){
+    
+  }
+
+  ngOnInit(): void {
+    this.gameEngineService.startGameEngine("canvas3d");
+  }
+
 }

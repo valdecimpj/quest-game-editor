@@ -1,0 +1,31 @@
+<div id="rightbar">
+    <div>Scene name: <input value="{{scene.name}}"></div>
+    <ul class="objectlist">
+        <li *ngFor="let gameObject of scene.gameObjects" >
+            <div [class.selectedObj]="gameObject.data.id==selectedObject.data.id" (click)="selectGameObject(gameObject.data.id)">{{gameObject.data.id}} | {{gameObject.data.name}}</div>
+        </li>
+    </ul>
+    <fieldset class="buttongroup">
+        <legend>Game Object</legend>
+        <button (click)="newGameObject()">New</button>
+        <button (click)="loadGameObject()">Load</button>
+        <button (click)="saveGameObject()">Save</button>
+        <button (click)="deleteGameObject()">Delete</button>
+    </fieldset>
+    <div>
+        <label>Object Name</label>
+        <input (change)="changeGameObjectName($event,selectedObject)" [value]="selectedObject.data.name">
+    </div>
+    <div>
+        <label>Add Script</label>
+    <input type="file" [formControl]="btnAddScript" (change)="addScript($event.target)">
+    </div>
+    <div id="scriptlist">
+        <fieldset *ngFor="let script of selectedObject.data.scripts">
+            <legend>{{script.path}}</legend>
+            <div *ngFor="let parameter of script.scriptConfig.scriptParameters">
+                <label>{{parameter.name}}</label><input (change)="changeParameterValue($event,parameter)" [value]="parameter.value">
+            </div>
+        </fieldset>
+    </div>
+</div>

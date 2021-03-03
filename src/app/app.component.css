@@ -1,0 +1,6 @@
+#canvas3d{
+    width:calc( 100% - 330px );
+    position:fixed;
+    top:40px;
+    z-index: -1;
+}
