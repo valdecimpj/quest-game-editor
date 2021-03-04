@@ -1,4 +1,4 @@
-export class ScriptParameters{
+export class ScriptParameter{
     name:string;
     value:any;
 

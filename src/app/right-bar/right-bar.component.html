@@ -23,8 +23,8 @@
     <div id="scriptlist">
         <fieldset *ngFor="let script of selectedObject.data.scripts">
             <legend>{{script.path}}</legend>
-            <div *ngFor="let parameter of script.scriptConfig.scriptParameters">
-                <label>{{parameter.name}}</label><input (change)="changeParameterValue($event,parameter)" [value]="parameter.value">
+            <div *ngFor="let parameterKey of getScriptParametersKeys(script.scriptParameters)">
+                <label>{{parameterKey}}</label><input (change)="changeParameterValue($event,script.scriptParameters,parameterKey)" [value]="getScriptParameterByKey(script.scriptParameters,parameterKey)">
             </div>
         </fieldset>
     </div>

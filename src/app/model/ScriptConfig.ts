@@ -1,9 +1,9 @@
-import { ScriptParameters } from "./ScriptParameters";
+import { ScriptParameter } from "./ScriptParameter";
 
 export class ScriptConfig{
-    scriptParameters:ScriptParameters[];
+    scriptParameter:ScriptParameter[];
 
     constructor(){
-        this.scriptParameters=[];
+        this.scriptParameter=[];
     }
 }

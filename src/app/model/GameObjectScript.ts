@@ -1,11 +1,10 @@
-import { ScriptConfig } from "./ScriptConfig";
+import { ScriptParameter } from "./ScriptParameter";
 
 export class GameObjectScript{
     path:string;
-    scriptConfig:ScriptConfig;
-
+    scriptParameters:ScriptParameter[];
     constructor(){
         this.path='';
-        this.scriptConfig=new ScriptConfig();
+        this.scriptParameters=[];
     }
 }

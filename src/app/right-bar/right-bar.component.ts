@@ -4,6 +4,7 @@ import { GameEngineService } from '../game-engine.service';
 import { GameObject } from '../model/GameObject';
 import { GameObjectScript } from '../model/GameObjectScript';
 import { Scene } from '../model/Scene';
+import { ScriptParameter } from '../model/ScriptParameter';
 
 @Component({
   selector: 'app-right-bar',
@@ -46,8 +47,8 @@ export class RightBarComponent implements OnInit {
     object.data.name=event.target.value;
   }
 
-  changeParameterValue(event:any,parameter:any){
-    parameter.value=event.target.value;
+  changeParameterValue(event:any,scriptParameters:any,parameterKey:string){
+    scriptParameters[parameterKey]=event.target.value;
     this.gameEngineServer.gameEngine.loadSceneDependencies();
   }
 
@@ -81,6 +82,14 @@ export class RightBarComponent implements OnInit {
     return -1;
   }
 
+  getScriptParametersKeys(scriptParameters:any):string[]{
+    return Object.keys(scriptParameters)
+  }
+
+  getScriptParameterByKey(scriptParameters:ScriptParameter[],parameterKey:any){
+    return scriptParameters[parameterKey];
+  }
+
   findGameObjectById(id:number){
     let indexAsIntOrString = this.findGameObjectIndexById(id);
     let index:number=+indexAsIntOrString;
@@ -98,7 +107,7 @@ export class RightBarComponent implements OnInit {
         let LoadedClass=Function("return "+e.target.result)();
         let gameObjectScript = new GameObjectScript();
         gameObjectScript.path=file.name;
-        gameObjectScript.scriptConfig=LoadedClass.defaultScriptConfig;
+        gameObjectScript.scriptParameters=LoadedClass.defaultScriptParameters;
         this.selectedObject.data.scripts.push(gameObjectScript);
         this.gameEngineServer.gameEngine.loadSceneDependencies();
       }
